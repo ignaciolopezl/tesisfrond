@@ -1,0 +1,21 @@
+version: '3'
+services:
+  panel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: panel
+    expose: 
+      - ${PANEL_PORT}
+    environment: 
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - .env
+    volumes:
+      - ./tesis
+    ports:
+      - ${PANEL_PORT}:${PANEL_PORT}
+  redis:
+    image: redis
+volumes:
+  database: {}
