@@ -1,1 +1,27 @@
-<p>edit works!</p>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="DiarioDataSource" style="width: 100%">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Descripción">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.DESCRIPCION}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Edición">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> <mat-icon (click)="editarDiario()" > edit</mat-icon></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+  [length]="DiarioDataSource?.data?.length"
+  [pageIndex]="0"
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 15, 20]">
+</mat-paginator>
+</div>

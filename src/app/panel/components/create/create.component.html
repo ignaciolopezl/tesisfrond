@@ -1,1 +1,100 @@
-<p>create works!</p>
+<div
+  class="contenido-buttons"
+  style="
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  "
+>
+  <button (click)="GetMarcasHechas()" class="btn btn-primary">Terminar Edición de diario</button>
+  <button (click)="LoadMarcas()" class="btn btn-primary">Cargar marcas</button>
+  <button (click)="saveContenido()" class="btn btn-primary">Guardar marca</button>
+  <button (click)="onClickLoad()" class="btn btn-primary">cargar</button>
+</div>
+<h1
+  style="
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 25px;
+  "
+>
+  <span style="border: solid 1px; padding: 10px; border-radius: 20px"
+    >Diario de Sesion del Senado - Legislatura numero</span
+  >
+</h1>
+
+<div class="contenido-items">
+  <div style="border: solid 1px; margin-left: 10px; border-radius: 10px">
+    <h1 style="width: 100%; text-align: center; padding-top: 20px">Marcas</h1>
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+
+        <button mat-icon-button disabled></button>
+        <span>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+              [(ngModel)]="node.state"
+              disabled
+
+            />
+            <label class="form-check-label" for="defaultCheck1">
+              <span (click)="changeMarca(node.name)">{{ node.name }}</span>
+            </label>
+          </div>
+        </span>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'Toggle' + node.name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        <span>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+              [(ngModel)]="node.state"
+              disabled
+
+            />
+            <label class="form-check-label" for="defaultCheck1">
+              <span (click)="changeMarca(node.name)">{{ node.name }}</span>
+            </label>
+          </div>
+        </span>
+      </mat-tree-node>
+    </mat-tree>
+  </div>
+
+  <tx-document-editor
+    #astxt
+    id="txtComponent"
+    width="98%"
+    height="1500px"
+    webSocketURL="wss://backend.textcontrol.com?access-token=a5wJ3oSwH8WbJWXn1CqS"
+    statusBarColor="#f0f0f0"
+    backColor="#f0f0f0"
+    style="border: solid 0.4px; margin-right: 10px; border-radius: 10px"
+  >
+  </tx-document-editor>
+</div>

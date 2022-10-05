@@ -1,8 +1,20 @@
 
-<!-- <nav class="navbar navbar-expand-lg px-5 justify-content-between" style="background-color:rgb(103, 103, 230) ;">
-  <a class="py-2 fs-3 text-white d-none d-md-inline-block" href="http://localhost:4200/panel/create">Creacion de Diario de Sesion</a>
-  <a class="py-2 fs-3 text-white d-none d-md-inline-block" href="http://localhost:4200/panel/edit">Edición / Revisíon</a>
-  <a class="py-2 fs-3 text-white d-none d-md-inline-block" href="http://localhost:4200/panel/view">Registro</a>
-</nav>
-<router-outlet></router-outlet> -->
+<mat-tab-group
+mat-stretch-tabs
+mat-align-tabs="center"
+color="accent"
+backgroundColor="primary"
+style="width: 100%"
+>
+<mat-tab label="Creacion de Diario de Sesion">
+  <app-create></app-create>
+</mat-tab>
+<mat-tab label="Edición / Revisíon">
+<app-edit></app-edit>
+</mat-tab>
+ <mat-tab label="Registro">
+<app-view></app-view>
+</mat-tab>
+</mat-tab-group>
+
 

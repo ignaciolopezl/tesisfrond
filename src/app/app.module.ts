@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { DocumentEditorModule } from '@txtextcontrol/tx-ng-document-editor';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule} from '@angular/common/http'
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
@@ -18,12 +18,19 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PanelComponent } from './panel/panel.component';
+import { EditComponent } from './panel/components/edit/edit.component';
+import { CreateComponent } from './panel/components/create/create.component';
+import { ViewComponent } from './panel/components/view/view.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PanelComponent
+    PanelComponent,
+    EditComponent,
+    CreateComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import { PanelComponent } from './panel/panel.component';
     MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

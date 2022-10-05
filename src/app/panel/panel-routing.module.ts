@@ -10,21 +10,7 @@ const routes: Routes = [
   {
     path: '',
     component: PanelComponent,
-    children: [
-      {
-        path: 'create',
-        component: CreateComponent,
-      },
-      {
-        path: 'edit',
-        component: EditComponent,
-      },
-      {
-        path: 'view',
-        component: ViewComponent,
-      },
-    ]
-  },
+  }
 
 
 ];
